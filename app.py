@@ -14,22 +14,25 @@ def index():
    
     if month is not None:
         try:
-            month = int(month)
-            df =  dp.processData('data_daily.csv')
-            xTrain, yTrain = dp.splittingData(df)
-            model = lp.LinearRegressionModel()
-            model.fit(xTrain, yTrain)
-            pred = int(model.predict(month))
-            plt.scatter(xTrain, yTrain, label='Data Points')
-            plt.plot(xTrain, model.predict(xTrain), color='red', label='Linear Regression')
-            plt.scatter(month, pred, color='green', label=f'Predicted Value for Month {month}')
-            plt.xlabel('Month')
-            plt.ylabel('Receipt Count')
-            plt.legend()
-            plt.grid(True)
-            plt.tight_layout()
-            plt.savefig('static\plot.png', format='png')
-            plt.close()
+            if 1<= month <=12:
+                month = int(month)
+                df =  dp.processData('data_daily.csv')
+                xTrain, yTrain = dp.splittingData(df)
+                model = lp.LinearRegressionModel()
+                model.fit(xTrain, yTrain)
+                pred = int(model.predict(month))
+                plt.scatter(xTrain, yTrain, label='Data Points')
+                plt.plot(xTrain, model.predict(xTrain), color='red', label='Linear Regression')
+                plt.scatter(month, pred, color='green', label=f'Predicted Value for Month {month}')
+                plt.xlabel('Month')
+                plt.ylabel('Receipt Count')
+                plt.legend()
+                plt.grid(True)
+                plt.tight_layout()
+                plt.savefig('static\plot.png', format='png')
+                plt.close()
+            else:
+                pred = "Please enter from 1-12"
                     
         except ValueError:  
             
