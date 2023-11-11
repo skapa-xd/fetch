@@ -22,9 +22,10 @@ GitHub Repository: Given the large size of the Docker image, I encountered diffi
 
 To run this application locally, follow these steps:
 
-Download and extract the provided zip folder.
-Open your terminal and navigate to the extracted directory.
-Execute the command pip install -r requirements.txt to install the necessary dependencies (assuming you have Python installed).
-Run python app.py in the terminal, and you will be provided with a link to the locally hosted website.
-Enter a month, and the application will predict a value and generate a corresponding plot.
+1) Download and extract the provided zip folder.
+2) Open your terminal and navigate to the extracted directory.
+3) Execute the command pip install -r requirements.txt to install the necessary dependencies (assuming you have Python installed).
+4) Run python app.py in the terminal, and you will be provided with a link to the locally hosted website.
+5) Enter a month, and the application will predict a value and generate a corresponding plot.
+
 This straightforward setup allows you to interact with the regression model and visualize the results effortlessly.
