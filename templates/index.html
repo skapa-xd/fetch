@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt Count Predictor</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            text-align: center;
+            padding-top: 100px;
+        }
+        #input-box {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+        }
+        #output {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        #scatterplot {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Receipt Count Predictor</h1>
+        <form method="POST">
+            <input id="input-box" type="text" name="month" placeholder="Enter Month" value="{{ month }}">
+            <input type="submit" value="Predict">
+          
+        </form>
+        <p id="output">
+            {% if pred is not none %}
+                Predicted Receipt Count: {{ pred }}
+            {% endif %}
+        </p>
+        <div id="scatterplot">
+            {% if plot %}
+              <img src="{{ url_for('scatterplot') }}" alt="Scatterplot of predicted receipt counts by month">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
