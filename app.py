@@ -5,19 +5,13 @@ import numpy as np
 from flask import Flask, render_template, request
 from flask import send_file
 
-
 app = Flask(__name__)
-
-    
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    
     month = request.form.get('month')
     pred = None
-    plot = None
    
-  # If the user has submitted the form, predict the receipt count and plot the scatterplot.
     if month is not None:
         try:
             month = int(month)
@@ -26,15 +20,22 @@ def index():
             model = lp.LinearRegressionModel()
             model.fit(xTrain, yTrain)
             pred = int(model.predict(month))
-            dp.plot(xTrain, yTrain, month, pred, model)
-            
+            plt.scatter(xTrain, yTrain, label='Data Points')
+            plt.plot(xTrain, model.predict(xTrain), color='red', label='Linear Regression')
+            plt.scatter(month, pred, color='green', label=f'Predicted Value for Month {month}')
+            plt.xlabel('Month')
+            plt.ylabel('Receipt Count')
+            plt.legend()
+            plt.grid(True)
+            plt.tight_layout()
+            plt.savefig('static\plot.png', format='png')
+            plt.close()
+                    
         except ValueError:  
             
             pred = "Invalid input. Please enter a valid month."
         
-
-    # Render the main page template.
-    return render_template('index.html', month=month, pred = pred)
+        return render_template('index.html', month=month, pred = pred)
  
 
 
@@ -55,4 +56,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(host='0.0.0.0', port=5000, debug = True)

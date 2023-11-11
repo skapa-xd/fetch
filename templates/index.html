@@ -44,11 +44,8 @@
                 Predicted Receipt Count: {{ pred }}
             {% endif %}
         </p>
-        <div id="scatterplot">
-            {% if plot %}
-              <img src="{{ url_for('scatterplot') }}" alt="Scatterplot of predicted receipt counts by month">
-            {% endif %}
-        </div>
+        <div class="scatterplot">
+            <img src="{{ url_for('static', filename='plot.png') }}" alt="Predicted Receipt Count Plot">
     </div>
 </body>
 </html>

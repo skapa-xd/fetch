@@ -27,15 +27,7 @@ def splittingData(df):
     
     return X, Y
 
-def plot(xTrain, yTrain, month, pred, model):
-    plt.scatter(xTrain, yTrain, label='Data Points')
-    plt.plot(xTrain, model.predict(xTrain), color='red', label='Linear Regression')
-    plt.scatter(month, pred, color='green', label=f'Predicted Value for Month {month}')
-    plt.xlabel('Month')
-    plt.ylabel('Receipt Count')
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
+
+    
 
     
